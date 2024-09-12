@@ -33,7 +33,7 @@ type RulesHooks interface {
 // by returning a nil (allowed) or non-nil (blocked) error.
 type RulesAllowlistHooks interface {
 	CanCreateContract(*libevm.AddressContext, libevm.StateReader) error
-	CanExecuteTransaction(from common.Address, to *common.Address, _ libevm.StateReader) error
+	CanExecuteTransaction(from common.Address, to *common.Address, _ libevm.AccessList, _ libevm.StateReader) error
 }
 
 // Hooks returns the hooks registered with [RegisterExtras], or [NOOPHooks] if
@@ -67,7 +67,7 @@ var _ interface {
 } = NOOPHooks{}
 
 // CanExecuteTransaction allows all (otherwise valid) transactions.
-func (NOOPHooks) CanExecuteTransaction(_ common.Address, _ *common.Address, _ libevm.StateReader) error {
+func (NOOPHooks) CanExecuteTransaction(_ common.Address, _ *common.Address, _ libevm.AccessList, _ libevm.StateReader) error {
 	return nil
 }
 

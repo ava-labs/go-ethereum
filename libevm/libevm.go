@@ -5,9 +5,7 @@ import (
 	"github.com/holiman/uint256"
 )
 
-// PrecompiledContract is an exact copy of vm.PrecompiledContract, mirrored here
-// for instances where importing that package would result in a circular
-// dependency.
+// PrecompiledContract is an exact copy of vm.PrecompiledContract.
 type PrecompiledContract interface {
 	RequiredGas(input []byte) uint64
 	Run(input []byte) ([]byte, error)
@@ -49,4 +47,13 @@ type AddressContext struct {
 	Origin common.Address // equivalent to vm.ORIGIN op code
 	Caller common.Address // equivalent to vm.CALLER op code
 	Self   common.Address // equivalent to vm.ADDRESS op code
+}
+
+// AccessList is an exact copy of types.AccessList.
+type AccessList []AccessTuple
+
+// AccessTuple is an exact copy of types.AccessTuple.
+type AccessTuple struct {
+	Address     common.Address
+	StorageKeys []common.Hash
 }
