@@ -21,11 +21,11 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/consensus/misc"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/ava-labs/go-ethereum/common"
+	"github.com/ava-labs/go-ethereum/common/math"
+	"github.com/ava-labs/go-ethereum/consensus/misc"
+	"github.com/ava-labs/go-ethereum/core/types"
+	"github.com/ava-labs/go-ethereum/params"
 )
 
 // VerifyEIP1559Header verifies some header attributes which were changed in EIP-1559,

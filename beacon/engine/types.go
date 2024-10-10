@@ -20,10 +20,10 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/ava-labs/go-ethereum/common"
+	"github.com/ava-labs/go-ethereum/common/hexutil"
+	"github.com/ava-labs/go-ethereum/core/types"
+	"github.com/ava-labs/go-ethereum/trie"
 )
 
 // PayloadVersion denotes the version of PayloadAttributes used to request the

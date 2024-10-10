@@ -24,17 +24,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/ethereum/go-ethereum/triedb"
+	"github.com/ava-labs/go-ethereum/accounts/abi"
+	"github.com/ava-labs/go-ethereum/common"
+	"github.com/ava-labs/go-ethereum/consensus/ethash"
+	"github.com/ava-labs/go-ethereum/core"
+	"github.com/ava-labs/go-ethereum/core/rawdb"
+	"github.com/ava-labs/go-ethereum/core/types"
+	"github.com/ava-labs/go-ethereum/core/vm"
+	"github.com/ava-labs/go-ethereum/crypto"
+	"github.com/ava-labs/go-ethereum/params"
+	"github.com/ava-labs/go-ethereum/rpc"
+	"github.com/ava-labs/go-ethereum/triedb"
 )
 
 func makeReceipt(addr common.Address) *types.Receipt {

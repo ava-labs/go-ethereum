@@ -19,15 +19,15 @@ package triedb
 import (
 	"errors"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/trie"
-	"github.com/ethereum/go-ethereum/trie/trienode"
-	"github.com/ethereum/go-ethereum/trie/triestate"
-	"github.com/ethereum/go-ethereum/triedb/database"
-	"github.com/ethereum/go-ethereum/triedb/hashdb"
-	"github.com/ethereum/go-ethereum/triedb/pathdb"
+	"github.com/ava-labs/go-ethereum/common"
+	"github.com/ava-labs/go-ethereum/ethdb"
+	"github.com/ava-labs/go-ethereum/log"
+	"github.com/ava-labs/go-ethereum/trie"
+	"github.com/ava-labs/go-ethereum/trie/trienode"
+	"github.com/ava-labs/go-ethereum/trie/triestate"
+	"github.com/ava-labs/go-ethereum/triedb/database"
+	"github.com/ava-labs/go-ethereum/triedb/hashdb"
+	"github.com/ava-labs/go-ethereum/triedb/pathdb"
 )
 
 // Config defines all necessary options for database.
