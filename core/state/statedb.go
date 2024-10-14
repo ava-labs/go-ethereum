@@ -19,6 +19,7 @@ package state
 
 import (
 	"fmt"
+	"reflect"
 	"sort"
 	"time"
 
@@ -47,6 +48,19 @@ type revision struct {
 	journalIndex int
 }
 
+type snapshotTree interface {
+	Snapshot(root common.Hash) snapshot.Snapshot
+	Update(
+		blockRoot common.Hash,
+		parentRoot common.Hash,
+		destructs map[common.Hash]struct{},
+		accounts map[common.Hash][]byte,
+		storage map[common.Hash]map[common.Hash][]byte,
+	) error
+	StorageIterator(root common.Hash, account common.Hash, seek common.Hash) (snapshot.StorageIterator, error)
+	Cap(root common.Hash, layers int) error
+}
+
 // StateDB structs within the ethereum protocol are used to store anything
 // within the merkle trie. StateDBs take care of caching and storing
 // nested states. It's the general query interface to retrieve:
@@ -63,7 +77,7 @@ type StateDB struct {
 	prefetcher *triePrefetcher
 	trie       Trie
 	hasher     crypto.KeccakState
-	snaps      *snapshot.Tree    // Nil if snapshot is not available
+	snaps      snapshotTree      // Nil if snapshot is not available
 	snap       snapshot.Snapshot // Nil if snapshot is not available
 
 	// originalRoot is the pre-state root, before any changes were made.
@@ -141,7 +155,15 @@ type StateDB struct {
 }
 
 // New creates a new state from a given trie.
-func New(root common.Hash, db Database, snaps *snapshot.Tree) (*StateDB, error) {
+func New(root common.Hash, db Database, snaps snapshotTree) (*StateDB, error) {
+	if snaps != nil {
+		// XXX: Make sure we treat incoming `nil` ptrs as `nil` values, not an
+		// interface to a nil ptr
+		v := reflect.ValueOf(snaps)
+		if v.Kind() == reflect.Ptr && v.IsNil() {
+			snaps = nil
+		}
+	}
 	tr, err := db.OpenTrie(root)
 	if err != nil {
 		return nil, err
